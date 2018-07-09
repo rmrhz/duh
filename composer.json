@@ -10,6 +10,9 @@
   "autoload": {
     "psr-4": {
       "News\\": "src/"
-    }
+    },
+    "classmap": [
+      "vendor/lincanbin/php-pdo-mysql-class"
+    ]
   }
 }
