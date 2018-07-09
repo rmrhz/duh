@@ -4,8 +4,44 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e8ca3a4cf6b92dbe4dc4d29ab80cf48e",
+    "content-hash": "a51f8217616be51361e9c00c63b881c7",
     "packages": [
+        {
+            "name": "lincanbin/php-pdo-mysql-class",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lincanbin/PHP-PDO-MySQL-Class.git",
+                "reference": "bb86ef1ee9d98444714a51fbf7754896012b0e5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lincanbin/PHP-PDO-MySQL-Class/zipball/bb86ef1ee9d98444714a51fbf7754896012b0e5d",
+                "reference": "bb86ef1ee9d98444714a51fbf7754896012b0e5d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.6"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache"
+            ],
+            "authors": [
+                {
+                    "name": "lincanbin",
+                    "email": "lincanbin@hotmail.com"
+                }
+            ],
+            "description": "A PHP MySQL PDO class similar to the the Python MySQLdb, which supports parameter binding when using 'WHERE IN' statement.",
+            "keywords": [
+                "database",
+                "mysql",
+                "pdo"
+            ],
+            "time": "2015-04-30T16:08:09+00:00"
+        },
         {
             "name": "phroute/phroute",
             "version": "v2.1.0",
