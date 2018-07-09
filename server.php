@@ -14,7 +14,7 @@ $dotenv->load();
 $router = new RouteCollector();
 
 $router->get('/', ['News\Platform', 'getIndex']);
-$router->get('/create' ['News\Platform', 'getAddBulletin']);
+$router->get('/create', ['News\Platform', 'getAddBulletin']);
 $router->post('/create', ['News\Platform', 'postAddBulletin']);
 $router->get('/{bulletin_id}/remove', ['News\Platform', 'getRemoveBulletin']);
 $router->get('/{bulletin_id}', ['News\Platform', 'getViewBulletin']);
