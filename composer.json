@@ -3,7 +3,8 @@
     "php": ">=7.0.0",
     "phroute/phroute": "^2.1",
     "vlucas/phpdotenv": "^2.4",
-    "lincanbin/php-pdo-mysql-class": "^1.0"
+    "lincanbin/php-pdo-mysql-class": "^1.0",
+    "twig/twig": "^2.0"
   },
 
   "autoload": {
