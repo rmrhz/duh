@@ -9,7 +9,7 @@
 
   "autoload": {
     "psr-4": {
-      "News\\": "src/News"
+      "News\\": "src/"
     }
   }
 }
