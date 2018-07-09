@@ -4,6 +4,8 @@ namespace News;
 
 class Platform
 {
+	use Traits\Bulletin;
+
 	/**
 	 * PDO Instance
 	 * https://packagist.org/packages/lincanbin/php-pdo-mysql-class
