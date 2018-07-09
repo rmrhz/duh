@@ -1,0 +1,13 @@
+{
+  "require": {
+    "php": ">=7.0.0",
+    "phroute/phroute": "^2.1",
+    "vlucas/phpdotenv": "^2.4"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "News\\": "src/News"
+    }
+  }
+}
