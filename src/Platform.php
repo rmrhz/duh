@@ -14,9 +14,20 @@ class Platform
 	 */
 	protected $db;
 
+	/**
+	 * Twig Instance
+	 *
+	 * @var \Twig_Environment
+	 */
+	protected $twig;
+
 	public function __construct()
 	{
 		$this->db = new DB(env('DB_HOST', 'localhost'), env('DB_NAME', 'duhnews'), env('DB_USER', 'root'), env('DB_PASS', ''));
+
+		$this->twig = new \Twig_Environment((new \Twig_Loader_Filesystem(ROOT . '/resources/templates')), [
+			'cache' ROOT . '/cache/templates'
+		]);
 	}
 
 	public function getIndex()
