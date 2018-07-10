@@ -94,9 +94,11 @@ class Platform
 		]));
 	}
 
-	public function postAddBulletinComment()
+	public function postAddBulletinComment($bulletin_id) : RedirectResponse
 	{
-		return new Response();
+		$this->addBulletinComment((int) $bulletin_id, $this->request->get('content'));
+
+		return new RedirectResponse('/' . $bulletin_id . '/comments');
 	}
 
 	public function getRemoveBulletinComment($bulletin_id, $comment_id) : RedirectResponse
