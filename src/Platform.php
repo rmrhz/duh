@@ -86,9 +86,11 @@ class Platform
 		]));
 	}
 
-	public function getAddBulletinComment()
+	public function getAddBulletinComment($bulletin_id) : Response
 	{
-		return new Response();
+		return new Response($this->twig->render('bulletin_comment_add.html', [
+			'bulletin_id' => (int) $bulletin_id
+		]));
 	}
 
 	public function postAddBulletinComment()
