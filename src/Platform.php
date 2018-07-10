@@ -2,6 +2,8 @@
 
 namespace News;
 
+use Symfony\Component\HttpFoundation\Response;
+
 class Platform
 {
 	use Traits\Bulletin;
@@ -32,47 +34,47 @@ class Platform
 
 	public function getIndex()
 	{
-
+		return new Response();
 	}
 
 	public function getAddBulletin()
 	{
-
+		return new Response();
 	}
 
 	public function postAddBulletin()
 	{
-
+		return new Response();
 	}
 
 	public function getRemoveBulletin()
 	{
-
+		return new Response();
 	}
 
 	public function getViewBulletin()
 	{
-
+		return new Response();
 	}
 
 	public function getBulletinComments()
 	{
-
+		return new Response();
 	}
 
 	public function getAddBulletinComment()
 	{
-		
+		return new Response();
 	}
 
 	public function postAddBulletinComment()
 	{
-
+		return new Response();
 	}
 
 	public function getRemoveBulletinComment()
 	{
-
+		return new Response();
 	}
 	
 }
