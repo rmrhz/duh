@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Duh News</title>
+    </head>
+    <body>
+        <div>
+            <a href='/{{ bulletin._id }}'>Back to Bulletin</a>
+        </div>
+        <hr>
+        <ul id="navigation">
+        {% for comment in comments %}
+            <li>{{ comment.content }}</a></li>
+        {% endfor %}
+        </ul>
+    </body>
+</html>
