@@ -9,9 +9,9 @@ trait Bulletin
 	 *
 	 * @return array
 	 */
-	public function getBulletins() : array
+	public function fetchBulletins() : array
 	{
-		return $this->db->query("SELECT * FROM bulletins");
+		return $this->db->query("SELECT * FROM `bulletins`");
 	}
 
 	/**
@@ -50,7 +50,7 @@ trait Bulletin
 	 * @param int $id
 	 * @return array
 	 */
-	public function viewBulletin(int $id) : array
+	public function fetchBulletin(int $id) : array
 	{
 		return $this->db->row("SELECT * FROM `bulletins` WHERE `id` = :id", ['id' => $id]);
 	}
@@ -85,7 +85,7 @@ trait Bulletin
 		return $query > 0 ? true : false;
 	}
 
-	public function viewBulletinComments(int $bulletin_id) : array
+	public function fetchBulletinComments(int $bulletin_id) : array
 	{
 		return $this->db->query("SELECT * FROM `bulletin_comments` WHERE `bulletin_id` = :bulletin_id", ['bulletin_id' => $bulletin_id]);
 	}
