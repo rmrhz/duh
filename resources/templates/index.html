@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Duh News</title>
+    </head>
+    <body>
+        <div>
+            <a href='#'>Create Bulletin</a>
+        </div>
+        <hr>
+        <ul id="navigation">
+        {% for bulletin in bulletins %}
+            <li><a href="/{{ bulletin.id }}">{{ bulletin.subject }}</a></li>
+        {% endfor %}
+        </ul>
+    </body>
+</html>
