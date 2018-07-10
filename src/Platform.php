@@ -77,9 +77,13 @@ class Platform
 		return new Response($this->twig->render('bulletin_view.html'));
 	}
 
-	public function getBulletinComments()
+	public function getBulletinComments($bulletin_id) : Response
 	{
-		return new Response();
+		$comments = $this->fetchBulletinComments((int) $bulletin_id);
+
+		return new Response($this->twig->render('bulletin_comments.html', [
+			'comments' => $comments
+		]));
 	}
 
 	public function getAddBulletinComment()
