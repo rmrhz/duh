@@ -10,7 +10,7 @@
         <hr>
         <ul id="navigation">
         {% for comment in comments %}
-            <li>{{ comment.content }}</a></li>
+            <li>{{ comment.content }}</a> (<a href='/{{ comment.bulletin_id }}/comments/{{ comment.id }}/remove'>Remove</a>)</li>
         {% endfor %}
         </ul>
     </body>
