@@ -3,6 +3,7 @@
 namespace News;
 
 use Symfony\Component\HttpFoundation\{
+	RedirectResponse,
 	Request,
 	Response
 };
@@ -98,9 +99,11 @@ class Platform
 		return new Response();
 	}
 
-	public function getRemoveBulletinComment()
+	public function getRemoveBulletinComment($bulletin_id, $comment_id) : RedirectResponse
 	{
-		return new Response();
+		$this->removeBulletinComment((int) $bulletin_id, (int) $comment_id);
+
+		return new RedirectResponse('/');
 	}
 	
 }
