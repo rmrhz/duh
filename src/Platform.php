@@ -44,9 +44,13 @@ class Platform
 		$this->request = Request::createFromGlobals(); // Avoid using super globals
 	}
 
-	public function getIndex()
+	public function getIndex() : Response
 	{
-		return new Response();
+		$bulletins = $this->fetchBulletins();
+
+		return new Response($this->twig->render('index.html', [
+			'bulletins' => $bulletins
+		]));
 	}
 
 	public function getAddBulletin()
