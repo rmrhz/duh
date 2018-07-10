@@ -21,14 +21,14 @@ trait Bulletin
 	 * @param string $content
 	 * @return bool
 	 */
-	public function addBulletin(string $subject, string $content) : bool
+	public function addBulletin(string $subject, string $content) : int
 	{
 		$query = $this->db->query("INSERT INTO `bulletins` (subject, content) VALUES (:subject, :content)", [
 			'subject' => $subject, 
 			'content' => $content,
 		]);
 
-		return $query > 0 ? true : false;
+		return $this->db->lastInsertId();
 	}
 
 	/**
