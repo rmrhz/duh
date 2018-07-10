@@ -90,7 +90,8 @@ class Platform
 		$comments = $this->fetchBulletinComments((int) $bulletin_id);
 
 		return new Response($this->twig->render('bulletin_comments.html', [
-			'comments' => $comments
+			'bulletin_id' => $bulletin_id,
+			'comments' => $comments,
 		]));
 	}
 
