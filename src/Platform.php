@@ -59,9 +59,11 @@ class Platform
 		return new Response($this->twig->render('bulletin_add.html'));
 	}
 
-	public function postAddBulletin()
+	public function postAddBulletin() : RedirectResponse
 	{
-		return new Response();
+		$bulletin_id = $this->addBulletin($this->request->get('subject'), $this->request->get('content'));
+
+		return new RedirectResponse('/' . $bulletin_id);
 	}
 
 	public function getRemoveBulletin($bulletin_id) : RedirectResponse
