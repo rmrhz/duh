@@ -53,9 +53,9 @@ class Platform
 		]));
 	}
 
-	public function getAddBulletin()
+	public function getAddBulletin() : Response
 	{
-		return new Response();
+		return new Response($this->twig->render('bulletin_add.html'));
 	}
 
 	public function postAddBulletin()
