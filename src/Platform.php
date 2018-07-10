@@ -68,9 +68,13 @@ class Platform
 		return new Response();
 	}
 
-	public function getViewBulletin()
+	public function getViewBulletin($bulletin_id) : Response
 	{
-		return new Response();
+		// We cast `int` instead of defining it in the method
+		// This assumes the underlying routing library that will pass it doens't cast it
+		$bulletin = $this->fetchBulletin((int) $bulletin_id);
+
+		return new Response($this->twig->render('bulletin_view.html'));
 	}
 
 	public function getBulletinComments()
