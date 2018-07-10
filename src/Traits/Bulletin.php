@@ -75,12 +75,16 @@ trait Bulletin
 	/**
 	 * Removes a bulletin comment
 	 *
-	 * @param int $id
+	 * @param int $bulletin_id
+	 * @param int $comment_id
 	 * @return bool
 	 */
-	public function removeBulletinComment(int $id) : bool
+	public function removeBulletinComment(int $bulletin_id, int $comment_id) : bool
 	{
-		$query = $this->db->query("DELETE FROM `bulletin_comments` WHERE `id` = :id", ['id' => $id]);
+		$query = $this->db->query("DELETE FROM `bulletin_comments` WHERE `id` = :comment_id AND `bulletin_id` = :bulletin_id", [
+			'comment_id' => $comment_id,
+			'bulletin_id' => $bulletin_id,
+		]);
 
 		return $query > 0 ? true : false;
 	}
