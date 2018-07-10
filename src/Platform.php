@@ -2,7 +2,10 @@
 
 namespace News;
 
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\{
+	Request,
+	Response
+};
 
 class Platform
 {
@@ -23,6 +26,13 @@ class Platform
 	 */
 	protected $twig;
 
+	/**
+	 * Request Instance
+	 *
+	 * @var \Symfony\Component\HttpFoundation\Request
+	 */
+	protected $request;
+
 	public function __construct()
 	{
 		$this->db = new \DB(getenv('DB_HOST', 'localhost'), getenv('DB_NAME', 'duhnews'), getenv('DB_USER', 'root'), getenv('DB_PASS', ''));
@@ -30,6 +40,8 @@ class Platform
 		$this->twig = new \Twig_Environment((new \Twig_Loader_Filesystem(ROOT . '/resources/templates')), [
 			'cache' => ROOT . '/cache/templates'
 		]);
+
+		$this->request = Request::createFromGlobals(); // Avoid using super globals
 	}
 
 	public function getIndex()
