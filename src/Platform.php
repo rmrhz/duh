@@ -80,7 +80,9 @@ class Platform
 		// This assumes the underlying routing library that will pass it doens't cast it
 		$bulletin = $this->fetchBulletin((int) $bulletin_id);
 
-		return new Response($this->twig->render('bulletin_view.html'));
+		return new Response($this->twig->render('bulletin_view.html', [
+			'bulletin' => $bulletin,
+		]));
 	}
 
 	public function getBulletinComments($bulletin_id) : Response
