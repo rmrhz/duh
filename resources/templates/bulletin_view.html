@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Duh News</title>
+    </head>
+    <body>
+        <div>
+            <a href='/'>Back</a> | <a href='/{{ bulletin.id }}/comments/create'>Add Comment</a> | <a href='/{{ bulletin.id }}/comments'>View Comments</a> | <a href='/{{ bulletin.id }}/remove'>Delete Bulletin</a>
+        </div>
+        <hr>
+        <h3>{{ bulletin.subject }}</h3>
+
+        {{ bulletin.content|nl2br }}
+        </body>
+</html>
