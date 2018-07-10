@@ -39,6 +39,7 @@ class Platform
 		$this->db = new \DB(getenv('DB_HOST', 'localhost'), getenv('DB_NAME', 'duhnews'), getenv('DB_USER', 'root'), getenv('DB_PASS', ''));
 
 		$this->twig = new \Twig_Environment((new \Twig_Loader_Filesystem(ROOT . '/resources/templates')), [
+			'debug' => true,
 			'cache' => ROOT . '/cache/templates'
 		]);
 
