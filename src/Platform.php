@@ -64,9 +64,11 @@ class Platform
 		return new Response();
 	}
 
-	public function getRemoveBulletin()
+	public function getRemoveBulletin($bulletin_id) : RedirectResponse
 	{
-		return new Response();
+		$this->removeBulletin((int) $bulletin_id);
+
+		return new RedirectResponse('/');
 	}
 
 	public function getViewBulletin($bulletin_id) : Response
