@@ -3,6 +3,7 @@
 require_once "vendor/autoload.php";
 
 use Phroute\Phroute\RouteCollector;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 define('ROOT', dirname(__FILE__));
 
@@ -11,6 +12,11 @@ $dotenv->load();
 
 // Routing Layer
 $router = new RouteCollector();
+
+$container = new ContainerBuilder();
+
+$container->register('db', 'DB')
+	->setArguments([getenv('DB_HOST', 'localhost'), getenv('DB_NAME', 'duhnews'), getenv('DB_USER', 'root'), getenv('DB_PASS', '')]);
 
 $router->get('/', ['News\Platform', 'getIndex']);
 $router->get('/create', ['News\Platform', 'getAddBulletin']);
