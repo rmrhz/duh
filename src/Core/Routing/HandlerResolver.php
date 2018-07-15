@@ -34,10 +34,9 @@ class HandlerResolver implements \Phroute\Phroute\HandlerResolverInterface {
 
 		$args = [];
 
-		foreach($reflection->getConstructor()->getParameters() as $parameter) {
-			if ( $this->container->has($parameter->name) ) {
-				$args[] = $this->container->get($parameter->name);
-			}
+		foreach($reflection->getConstructor()->getParameters() as $key => $parameter) {
+			// Don't catch exceptions for now if the service is not found
+			$args[$key] = $this->container->get($parameter->name);
 		}
 
 		return $reflection->newInstanceArgs($args);
