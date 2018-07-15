@@ -3,7 +3,6 @@
 require_once "vendor/autoload.php";
 
 use Phroute\Phroute\RouteCollector;
-use Illuminate\Database\Capsule\Manager as Capsule;  
 
 define('ROOT', dirname(__FILE__));
 
