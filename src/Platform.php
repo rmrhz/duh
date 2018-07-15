@@ -34,14 +34,10 @@ class Platform
 	 */
 	protected $request;
 
-	public function __construct()
+	public function __construct(\DB $db, \Twig_Environment $twig)
 	{
-		$this->db = new \DB(getenv('DB_HOST', 'localhost'), getenv('DB_NAME', 'duhnews'), getenv('DB_USER', 'root'), getenv('DB_PASS', ''));
-
-		$this->twig = new \Twig_Environment((new \Twig_Loader_Filesystem(ROOT . '/resources/templates')), [
-			'debug' => true,
-			'cache' => ROOT . '/cache/templates'
-		]);
+		$this->db = $db;
+		$this->twig = $twig;
 
 		$this->request = Request::createFromGlobals(); // Avoid using super globals
 	}
