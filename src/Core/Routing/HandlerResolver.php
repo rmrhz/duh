@@ -22,9 +22,24 @@ class HandlerResolver implements \Phroute\Phroute\HandlerResolverInterface {
 	{
 		if(is_array($handler) && is_string($handler[0]))
 		{
-			$handler[0] = new $handler[0];
+			$handler[0] = $this->resolveController($handler[0]);
 		}
 		
 		return $handler;
+	}
+
+	public function resolveController($controller)
+	{
+		$reflection = $this->container->getReflectionClass($controller);
+
+		$args = [];
+
+		foreach($reflection->getConstructor()->getParameters() as $parameter) {
+			if ( $this->container->has($parameter->name) ) {
+				$args[] = $this->container->get($parameter->name);
+			}
+		}
+
+		return $reflection->newInstanceArgs($args);
 	}
 }
