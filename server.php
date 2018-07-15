@@ -17,6 +17,8 @@ $container = new ContainerBuilder();
 
 $container->register('db', 'DB')
 	->setArguments([getenv('DB_HOST', 'localhost'), getenv('DB_NAME', 'duhnews'), getenv('DB_USER', 'root'), getenv('DB_PASS', '')]);
+$container->register('resolver', 'News\Core\Routing\HandlerResolver')
+	->addArgument($container);
 
 $router->get('/', ['News\Platform', 'getIndex']);
 $router->get('/create', ['News\Platform', 'getAddBulletin']);
