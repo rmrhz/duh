@@ -21,6 +21,12 @@ $container->register('resolver', 'News\Core\Routing\HandlerResolver')
 	->addArgument($container);
 $container->register('twig_filesystem', 'Twig_Loader_Filesystem')
 	->addArgument(ROOT . '/resources/templates');
+$container->register('twig', 'Twig_Environment')
+	->addArgument($container->get('twig_filesystem'))
+	->addArgument([
+		'debug' => true,
+		'cache' => ROOT . '/cache/templates'
+	]);
 
 $router->get('/', ['News\Platform', 'getIndex']);
 $router->get('/create', ['News\Platform', 'getAddBulletin']);
