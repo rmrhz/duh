@@ -2,6 +2,8 @@
 
 namespace News\Core\Routing;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+
 class HandlerResolver implements \Phroute\Phroute\HandlerResolverInterface {
 
 	public function __construct(ContainerBuilder $container)
