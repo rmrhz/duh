@@ -1,6 +1,9 @@
 parameters:
   container: !php/const CONTAINER
   root.path: !php/const ROOT
+  twig.options:
+    debug: '%env(TWIG_DEBUG)%'
+    cache: '%root.path%/cache/templates'
 
 services:
   db:
@@ -12,3 +15,6 @@ services:
   twig.filesystem:
     class: Twig_Loader_Filesystem
     arguments: ['%root.path%/resources/templates']
+  twig:
+    class: Twig_Environment
+    arguments: ['%twig.options%']
