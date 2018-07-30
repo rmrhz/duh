@@ -21,19 +21,6 @@ $loader->load('services.yaml');
 
 define('CONTAINER', $container);
 
-$container->register('db', 'DB')
-	->setArguments([getenv('DB_HOST', 'localhost'), getenv('DB_NAME', 'duhnews'), getenv('DB_USER', 'root'), getenv('DB_PASS', '')]);
-$container->register('resolver', 'News\Core\Routing\HandlerResolver')
-	->addArgument($container);
-$container->register('twig_filesystem', 'Twig_Loader_Filesystem')
-	->addArgument(ROOT . '/resources/templates');
-$container->register('twig', 'Twig_Environment')
-	->addArgument($container->get('twig_filesystem'))
-	->addArgument([
-		'debug' => true,
-		'cache' => ROOT . '/cache/templates'
-	]);
-
 $router->get('/', ['News\Platform', 'getIndex']);
 $router->get('/create', ['News\Platform', 'getAddBulletin']);
 $router->post('/create', ['News\Platform', 'postAddBulletin']);
