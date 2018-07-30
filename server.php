@@ -19,6 +19,8 @@ $container = new ContainerBuilder();
 $loader = new YamlFileLoader($containerBuilder, new FileLocator(ROOT));
 $loader->load('services.yaml');
 
+define('CONTAINER', $container);
+
 $container->register('db', 'DB')
 	->setArguments([getenv('DB_HOST', 'localhost'), getenv('DB_NAME', 'duhnews'), getenv('DB_USER', 'root'), getenv('DB_PASS', '')]);
 $container->register('resolver', 'News\Core\Routing\HandlerResolver')
