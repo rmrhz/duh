@@ -2,7 +2,7 @@ parameters:
   container: !php/const CONTAINER
   root.path: !php/const ROOT
 
-services
+services:
   db:
     class: DB
     arguments: ['%env(DB_HOST)%', '%env(DB_NAME)%', '%env(DB_USER)%', '%env(DB_PASS)%']
