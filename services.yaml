@@ -1,5 +1,4 @@
 parameters:
-  container: !php/const CONTAINER
   root.path: !php/const ROOT
   twig.options:
     debug: '%env(TWIG_DEBUG)%'

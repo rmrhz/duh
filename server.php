@@ -16,10 +16,9 @@ $dotenv->load();
 $router = new RouteCollector();
 
 $container = new ContainerBuilder();
+$container->setParameter('container', $container);
 $loader = new YamlFileLoader($containerBuilder, new FileLocator(ROOT));
 $loader->load('services.yaml');
-
-define('CONTAINER', $container);
 
 $router->get('/', ['News\Platform', 'getIndex']);
 $router->get('/create', ['News\Platform', 'getAddBulletin']);
