@@ -6,3 +6,6 @@ services
   db:
     class: DB
     arguments: ['%env(DB_HOST)%', '%env(DB_NAME)%', '%env(DB_USER)%', '%env(DB_PASS)%']
+  resolver:
+    class: News\Core\Routing\HandlerResolver
+    arguments: ['%container%']
