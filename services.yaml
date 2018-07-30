@@ -9,6 +9,6 @@ services:
   resolver:
     class: News\Core\Routing\HandlerResolver
     arguments: ['%container%']
-  twig_filesystem:
+  twig.filesystem:
     class: Twig_Loader_Filesystem
     arguments: ['%root.path%/resources/templates']
