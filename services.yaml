@@ -1,4 +1,5 @@
 parameters:
+  container: !php/const CONTAINER
   root.path: !php/const ROOT
 
 services
