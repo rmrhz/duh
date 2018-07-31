@@ -20,5 +20,5 @@ services:
     arguments: ['%root.path%/resources/templates']
   twig:
     class: Twig_Environment
-    arguments: ['%twig.options%']
+    arguments: ['@twig.filesystem', '%twig.options%']
     public: true
