@@ -21,6 +21,8 @@ $container->setParameter('container', $container);
 $loader = new YamlFileLoader($container, new FileLocator(ROOT));
 $loader->load('services.yaml');
 
+$container->compile(true);
+
 $router->get('/', ['News\Platform', 'getIndex']);
 $router->get('/create', ['News\Platform', 'getAddBulletin']);
 $router->post('/create', ['News\Platform', 'postAddBulletin']);
