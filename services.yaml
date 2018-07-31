@@ -12,7 +12,7 @@ services:
     arguments: ['%env(DB_HOST)%', '%env(DB_NAME)%', '%env(DB_USER)%', '%env(DB_PASS)%']
   resolver:
     class: News\Core\Routing\HandlerResolver
-    arguments: ['%container%']
+    arguments: ['@container']
   twig.filesystem:
     class: Twig_Loader_Filesystem
     arguments: ['%root.path%/resources/templates']
