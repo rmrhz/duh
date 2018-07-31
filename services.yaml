@@ -5,6 +5,8 @@ parameters:
     cache: '%root.path%/cache/templates'
 
 services:
+  container:
+    class: Symfony\Component\DependencyInjection\ContainerBuilder
   db:
     class: DB
     arguments: ['%env(DB_HOST)%', '%env(DB_NAME)%', '%env(DB_USER)%', '%env(DB_PASS)%']
