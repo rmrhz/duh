@@ -4,29 +4,24 @@ require_once "vendor/autoload.php";
 
 use Phroute\Phroute\RouteCollector;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\Dotenv\Dotenv;
 
 define('ROOT', dirname(__FILE__));
 
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
+$dotenv = new Dotenv;
+$dotenv->load(ROOT . '/.env');
 
 // Routing Layer
 $router = new RouteCollector();
 
 $container = new ContainerBuilder();
+$container->setParameter('container', $container);
+$loader = new YamlFileLoader($container, new FileLocator(ROOT));
+$loader->load('services.yaml');
 
-$container->register('db', 'DB')
-	->setArguments([getenv('DB_HOST', 'localhost'), getenv('DB_NAME', 'duhnews'), getenv('DB_USER', 'root'), getenv('DB_PASS', '')]);
-$container->register('resolver', 'News\Core\Routing\HandlerResolver')
-	->addArgument($container);
-$container->register('twig_filesystem', 'Twig_Loader_Filesystem')
-	->addArgument(ROOT . '/resources/templates');
-$container->register('twig', 'Twig_Environment')
-	->addArgument($container->get('twig_filesystem'))
-	->addArgument([
-		'debug' => true,
-		'cache' => ROOT . '/cache/templates'
-	]);
+$container->compile(true);
 
 $router->get('/', ['News\Platform', 'getIndex']);
 $router->get('/create', ['News\Platform', 'getAddBulletin']);

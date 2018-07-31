@@ -1,0 +1,22 @@
+parameters:
+  root.path: !php/const ROOT
+  twig.options:
+    debug: '%env(TWIG_DEBUG)%'
+    cache: '%root.path%/cache/templates'
+
+services:
+  db:
+    class: DB
+    arguments: ['%env(DB_HOST)%', '%env(DB_NAME)%', '%env(DB_USER)%', '%env(DB_PASS)%']
+    public: true
+  resolver:
+    class: News\Core\Routing\HandlerResolver
+    arguments: ['%container%']
+    public: true
+  twig.filesystem:
+    class: Twig_Loader_Filesystem
+    arguments: ['%root.path%/resources/templates']
+  twig:
+    class: Twig_Environment
+    arguments: ['@twig.filesystem', '%twig.options%']
+    public: true
