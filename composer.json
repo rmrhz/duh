@@ -6,7 +6,8 @@
     "lincanbin/php-pdo-mysql-class": "^1.0",
     "twig/twig": "^2.0",
     "symfony/http-foundation": "^4.1",
-    "symfony/dependency-injection": "^4.1"
+    "symfony/dependency-injection": "^4.1",
+    "symfony/config": "^4.1"
   },
 
   "autoload": {
