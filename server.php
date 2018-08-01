@@ -23,6 +23,10 @@ $loader->load('services.yaml');
 
 $container->compile(true);
 
+foreach(glob(ROOT . '/routes/*.php') as $route) {
+    require_once $route;
+}
+
 $router->get('/', ['News\Platform', 'getIndex']);
 $router->get('/create', ['News\Platform', 'getAddBulletin']);
 $router->post('/create', ['News\Platform', 'postAddBulletin']);
