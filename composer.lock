@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "30705295152d88055fb74c6bcf53e917",
+    "content-hash": "2c7b9553f85421587365dd2715101191",
     "packages": [
         {
             "name": "lincanbin/php-pdo-mysql-class",
