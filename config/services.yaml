@@ -5,13 +5,20 @@ parameters:
     cache: '%root.path%/cache/templates'
 
 services:
+  app.routing.dispatcher:
+    public: true
+    class: 'News\Core\Routing\Dispatcher'
+    arguments: ['@app.routing.routing', '@service_container']
+
+  app.routing.routing:
+    class: 'News\Core\Routing\Routing'
+    factory: 'News\Core\Routing\Routing::getMatcherAttributes'
+    arguments:
+      $locator: '@symfony.file.locator'
+      $request: '@symfony.request'
   db:
     class: DB
     arguments: ['%env(DB_HOST)%', '%env(DB_NAME)%', '%env(DB_USER)%', '%env(DB_PASS)%']
-    public: true
-  resolver:
-    class: News\Core\Routing\HandlerResolver
-    arguments: ['%container%']
     public: true
   twig.filesystem:
     class: Twig_Loader_Filesystem
