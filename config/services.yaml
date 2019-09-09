@@ -1,5 +1,4 @@
 parameters:
-  root.path: !php/const ROOT
   twig.options:
     debug: '%env(TWIG_DEBUG)%'
     cache: '%root.path%/cache/templates'

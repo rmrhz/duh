@@ -20,7 +20,7 @@ $router = new RouteCollector();
 
 $container = new ContainerBuilder();
 $container->setParameter('container', $container);
-$container->setParameter('root_dir', ROOT);
+$container->setParameter('root.path', ROOT);
 
 $loader = new YamlFileLoader($container, $locator);
 $loader->load('services.yaml');
