@@ -20,6 +20,8 @@ $router = new RouteCollector();
 
 $container = new ContainerBuilder();
 $container->setParameter('container', $container);
+$container->setParameter('root_dir', ROOT);
+
 $loader = new YamlFileLoader($container, $locator);
 $loader->load('services.yaml');
 
