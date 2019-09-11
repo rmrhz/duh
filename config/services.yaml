@@ -10,6 +10,8 @@ services:
     calls:
       - method: setRequest
         arguments: ['@symfony.request']
+      - method: setTwig
+        arguments: ['@twig']
 
   app.routing.dispatcher:
     public: true
