@@ -35,7 +35,7 @@ abstract class Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function response(string $template, array $params) : Response
+    public function response(string $template, array $params = []) : Response
     {
         return new Response($this->twig->render($template, $params));
     }
