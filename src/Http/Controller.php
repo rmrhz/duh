@@ -8,6 +8,13 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 abstract class Controller
 {
     /**
+     * Twig Template Engine container
+     *
+     * @param \Twig_Environment
+     */
+    protected $twig;
+
+    /**
      * Symfony's HttpFoundation's Request container
      *
      * @param \Symfony\Component\HttpFoundation\Request $request
@@ -32,5 +39,15 @@ abstract class Controller
     public function setRequest(Request $request)
     {
         $this->request = $request;
+    }
+
+    /**
+     * Sets Twig Template Engine
+     *
+     * @param \Twig_Environment
+     */
+    public function setTwig(\Twig_Environment $twig)
+    {
+        $this->twig = $twig;
     }
 }
