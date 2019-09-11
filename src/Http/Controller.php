@@ -3,6 +3,7 @@
 namespace News\Core\Http;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 abstract class Controller
@@ -20,6 +21,16 @@ abstract class Controller
      * @param \Symfony\Component\HttpFoundation\Request $request
      */
     protected $request;
+
+    /**
+     * Returns a standard response
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function response(string $template, array $params) : Response
+    {
+        return new Response($this->twig->render($template, $params));
+    }
 
     /**
      * Returns the response in JSON format
