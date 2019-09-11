@@ -26,3 +26,6 @@ services:
     class: Twig_Environment
     arguments: ['@twig.filesystem', '%twig.options%']
     public: true
+  symfony.request:
+    class: Symfony\Component\HttpFoundation\Request
+    factory: 'Symfony\Component\HttpFoundation\Request::createFromGlobals'
