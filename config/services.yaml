@@ -36,3 +36,10 @@ services:
   symfony.request:
     class: Symfony\Component\HttpFoundation\Request
     factory: 'Symfony\Component\HttpFoundation\Request::createFromGlobals'
+
+  News\Http\Controllers\:
+    public: true
+    parent: app.http.controller
+    resource: '../src/Http/Controllers/*'
+    autowire: true
+    autoconfigure: false
