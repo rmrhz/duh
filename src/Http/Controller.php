@@ -5,6 +5,7 @@ namespace News\Core\Http;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 abstract class Controller
 {
@@ -29,6 +30,16 @@ abstract class Controller
      * @param \Symfony\Component\HttpFoundation\Request $request
      */
     protected $request;
+
+    /**
+     * Redirect to the URI given
+     *
+     * @param string $uri
+     */
+    public function redirect(string $uri) : RedirectResponse
+    {
+        return new RedirectResponse($uri);
+    }
 
     /**
      * Returns a standard response
