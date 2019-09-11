@@ -2,7 +2,6 @@
 
 require_once "vendor/autoload.php";
 
-use Phroute\Phroute\RouteCollector;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -26,7 +25,3 @@ $loader = new YamlFileLoader($container, $locator);
 $loader->load('services.yaml');
 
 $container->compile(true);
-
-foreach(glob(ROOT . '/routes/*.php') as $route) {
-    require_once $route;
-}
