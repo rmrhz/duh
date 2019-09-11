@@ -1,17 +1,34 @@
 parameters:
-  root.path: !php/const ROOT
   twig.options:
     debug: '%env(TWIG_DEBUG)%'
     cache: '%root.path%/cache/templates'
 
 services:
+  app.http.controller:
+    class: 'News\Core\Http\Controller'
+    abstract: true
+    calls:
+      - method: setRequest
+        arguments: ['@symfony.request']
+      - method: setDb
+        arguments: ['@db']
+      - method: setTwig
+        arguments: ['@twig']
+
+  app.routing.dispatcher:
+    public: true
+    class: 'News\Core\Routing\Dispatcher'
+    arguments: ['@app.routing.routing', '@service_container']
+
+  app.routing.routing:
+    class: 'News\Core\Routing\Routing'
+    factory: 'News\Core\Routing\Routing::getMatcherAttributes'
+    arguments:
+      $locator: '@symfony.file.locator'
+      $request: '@symfony.request'
   db:
     class: DB
     arguments: ['%env(DB_HOST)%', '%env(DB_NAME)%', '%env(DB_USER)%', '%env(DB_PASS)%']
-    public: true
-  resolver:
-    class: News\Core\Routing\HandlerResolver
-    arguments: ['%container%']
     public: true
   twig.filesystem:
     class: Twig_Loader_Filesystem
@@ -20,3 +37,13 @@ services:
     class: Twig_Environment
     arguments: ['@twig.filesystem', '%twig.options%']
     public: true
+  symfony.request:
+    class: Symfony\Component\HttpFoundation\Request
+    factory: 'Symfony\Component\HttpFoundation\Request::createFromGlobals'
+
+  News\Http\Controllers\:
+    public: true
+    parent: app.http.controller
+    resource: '../src/Http/Controllers/*'
+    autowire: true
+    autoconfigure: false
