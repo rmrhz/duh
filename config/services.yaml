@@ -4,6 +4,13 @@ parameters:
     cache: '%root.path%/cache/templates'
 
 services:
+  app.http.controller:
+    class: 'News\Core\Http\Controller'
+    abstract: true
+    calls:
+      - method: setRequest
+        arguments: ['@symfony.request']
+
   app.routing.dispatcher:
     public: true
     class: 'News\Core\Routing\Dispatcher'
