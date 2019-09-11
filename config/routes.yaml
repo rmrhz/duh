@@ -1,0 +1,35 @@
+index:
+  path: /
+  controller: News\Http\Controllers\PlatformController::getIndex
+create.get:
+  path: /create
+  controller: News\Http\Controllers\PlatformController::getAddBulletin
+  methods: GET
+create.post:
+  path: /create
+  controller: News\Http\Controllers\PlatformController::postAddBulletin
+  methods: POST
+bulletin:
+  path: /{bulletin_id}
+  controller: News\Http\Controllers\PlatformController::getBulletin
+  methods: GET
+bulletin.remove:
+  path: /{bulletin_id}/remove
+  controller: News\Http\Controllers\PlatformController::getRemoveBulletin
+  methods: GET|DELETE
+bulletin.comments:
+  path: /{bulletin_id}/comments
+  controller: News\Http\Controllers\PlatformController::getBulletinComments
+  methods: GET
+bulletin.comments.create.get:
+  path: /{bulletin_id}/comments/create
+  controller: News\Http\Controllers\PlatformController::getAddBulletinComment
+  methods: GET
+bulletin.comments.create.post:
+  path: /{bulletin_id}/comments/create
+  controller: News\Http\Controllers\PlatformController::postAddBulletinComment
+  methods: POST
+bulletin.comments.remove:
+  path: /{bulletin_id}/comments/{bulletin_comment_id}/remove
+  controller: News\Http\Controllers\PlatformController::getRemoveBulletinComment
+  methods: GET
