@@ -2,7 +2,5 @@
 
 require_once dirname(dirname(__FILE__)) . "/server.php";
 
-$dispatcher = new Phroute\Phroute\Dispatcher($router->getData(), $container->get('resolver'));
-
-$response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-$response->send();
+$dispatcher = $container->get('app.routing.dispatcher');
+$dispatcher->resolve()->send();
