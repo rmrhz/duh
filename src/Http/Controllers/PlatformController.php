@@ -13,7 +13,7 @@ final class PlatformController extends \News\Http\Controller
 
     public function getIndex()
     {
-        $bulletins = $this->fetchBulletins();
+        $bulletins = $this->bulletins->fetchBulletins();
 
         return $this->response('index.html', [
             'bulletins' => $bulletins
@@ -27,14 +27,14 @@ final class PlatformController extends \News\Http\Controller
 
     public function postAddBulletin()
     {
-        $bulletin_id = $this->addBulletin($this->request->get('subject'), $this->request->get('content'));
+        $bulletin_id = $this->bulletins->addBulletin($this->request->get('subject'), $this->request->get('content'));
 
         return $this->redirect('/' . $bulletin_id);
     }
 
     public function getRemoveBulletin($bulletin_id)
     {
-        $this->removeBulletin((int) $bulletin_id);
+        $this->bulletins->removeBulletin((int) $bulletin_id);
 
         return $this->redirect('/');
     }
@@ -43,7 +43,7 @@ final class PlatformController extends \News\Http\Controller
     {
         // We cast `int` instead of defining it in the method
         // This assumes the underlying routing library that will pass it doens't cast it
-        $bulletin = $this->fetchBulletin((int) $bulletin_id);
+        $bulletin = $this->bulletins->fetchBulletin((int) $bulletin_id);
 
         return $this->response('bulletin_view.html', [
             'bulletin' => $bulletin,
@@ -52,7 +52,7 @@ final class PlatformController extends \News\Http\Controller
 
     public function getBulletinComments($bulletin_id)
     {
-        $comments = $this->fetchBulletinComments((int) $bulletin_id);
+        $comments = $this->bulletins->fetchBulletinComments((int) $bulletin_id);
 
         return $this->response('bulletin_comments.html', [
             'bulletin_id' => $bulletin_id,
@@ -62,21 +62,21 @@ final class PlatformController extends \News\Http\Controller
 
     public function getAddBulletinComment($bulletin_id)
     {
-        return $this->response('bulletin_comment_add.html', [
+        return $this->bulletins->response('bulletin_comment_add.html', [
             'bulletin_id' => (int) $bulletin_id
         ]);
     }
 
     public function postAddBulletinComment($bulletin_id)
     {
-        $this->addBulletinComment((int) $bulletin_id, $this->request->get('content'));
+        $this->bulletins->addBulletinComment((int) $bulletin_id, $this->request->get('content'));
 
         return $this->redirect('/' . $bulletin_id . '/comments');
     }
 
     public function getRemoveBulletinComment($bulletin_id, $comment_id)
     {
-        $this->removeBulletinComment((int) $bulletin_id, (int) $comment_id);
+        $this->bulletins->removeBulletinComment((int) $bulletin_id, (int) $comment_id);
 
         return $this->redirect('/');
     }
