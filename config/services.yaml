@@ -44,9 +44,14 @@ services:
     class: Twig_Environment
     arguments: ['@twig.filesystem', '%twig.options%']
     public: true
+
   symfony.request:
     class: Symfony\Component\HttpFoundation\Request
     factory: 'Symfony\Component\HttpFoundation\Request::createFromGlobals'
+
+  symfony.file.locator:
+    class: Symfony\Component\Config\FileLocator
+    arguments: ['%root.path%/config']
 
   News\Http\Controllers\:
     public: true
