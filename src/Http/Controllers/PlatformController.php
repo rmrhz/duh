@@ -2,6 +2,8 @@
 
 namespace News\Http\Controllers;
 
+use News\Repositories\BulletinRepository;
+
 final class PlatformController extends \News\Http\Controller
 {
     protected $bulletins;
