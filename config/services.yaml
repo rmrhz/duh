@@ -10,8 +10,6 @@ services:
     calls:
       - method: setRequest
         arguments: ['@symfony.request']
-      - method: setDb
-        arguments: ['@db']
       - method: setTwig
         arguments: ['@twig']
 
@@ -26,6 +24,15 @@ services:
     arguments:
       $locator: '@symfony.file.locator'
       $request: '@symfony.request'
+
+  app.db.repository:
+    class: News\Core\Repository\Repository
+    abstract: true
+    calls:
+      - method: setDbInstance
+        arguments:
+          $db: '@db'
+
   db:
     class: DB
     arguments: ['%env(DB_HOST)%', '%env(DB_NAME)%', '%env(DB_USER)%', '%env(DB_PASS)%']
@@ -37,9 +44,14 @@ services:
     class: Twig_Environment
     arguments: ['@twig.filesystem', '%twig.options%']
     public: true
+
   symfony.request:
     class: Symfony\Component\HttpFoundation\Request
     factory: 'Symfony\Component\HttpFoundation\Request::createFromGlobals'
+
+  symfony.file.locator:
+    class: Symfony\Component\Config\FileLocator
+    arguments: ['%root.path%/config']
 
   News\Http\Controllers\:
     public: true
@@ -47,3 +59,11 @@ services:
     resource: '../src/Http/Controllers/*'
     autowire: true
     autoconfigure: false
+
+  News\Repositories\:
+    public: true
+    parent: app.db.repository
+    resource: "../src/Repositories/*"
+    autowire: true
+    autoconfigure: false
+  
