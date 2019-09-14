@@ -10,8 +10,6 @@ services:
     calls:
       - method: setRequest
         arguments: ['@symfony.request']
-      - method: setDb
-        arguments: ['@db']
       - method: setTwig
         arguments: ['@twig']
 
