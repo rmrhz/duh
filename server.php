@@ -14,9 +14,6 @@ $dotenv->load(ROOT . '/.env');
 
 $locator = new FileLocator(ROOT . '/config');
 
-// Routing Layer
-$router = new RouteCollector();
-
 $container = new ContainerBuilder();
 $container->setParameter('container', $container);
 $container->setParameter('root.path', ROOT);
