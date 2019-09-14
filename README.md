@@ -1,1 +1,2 @@
-# duh-news
+# Duh News
+Duh News is a news bulletin and discussion platform where the aim of the projet is to relearn all contemporary web development essentials. The project started as a coding test on a past job application (a story for another time). Technology can quickly change in a span of a year and considering how I was outdated in frontend development, I thought of giving it a try in my spare _spare_ time.
