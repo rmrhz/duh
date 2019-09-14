@@ -1,6 +1,6 @@
 <?php
 
-namespace News\Core\Http;
+namespace News\Http;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
