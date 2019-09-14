@@ -10,14 +10,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 abstract class Controller
 {
     /**
-     * PDO Instance
-     * https://packagist.org/packages/lincanbin/php-pdo-mysql-class
-     *
-     * @var \DB
-     */
-    protected $db;
-
-    /**
      * Twig Template Engine container
      *
      * @param \Twig_Environment
@@ -59,16 +51,6 @@ abstract class Controller
     public function jsonResponse($data) : JsonResponse
     {
         return new JsonResponse($data);
-    }
-
-    /**
-     * Sets the DB
-     *
-     * @param \DB
-     */
-    public function setDb(\DB $db)
-    {
-        $this->db = $db;
     }
 
     /**
