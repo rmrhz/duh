@@ -13,11 +13,11 @@ abstract class Repository
     protected $db;
 
     /**
-     * Sets the DB
+     * Sets the DB instance
      *
      * @param \DB
      */
-    public function setDb(\DB $db)
+    public function setDbInstance(\DB $db)
     {
         $this->db = $db;
     }
