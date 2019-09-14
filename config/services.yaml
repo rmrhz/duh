@@ -24,6 +24,15 @@ services:
     arguments:
       $locator: '@symfony.file.locator'
       $request: '@symfony.request'
+
+  app.db.repository:
+    class: News\Core\Repository\Repository
+    abstract: true
+    calls:
+      - method: setDbInstance
+        arguments:
+          $db: '@db'
+
   db:
     class: DB
     arguments: ['%env(DB_HOST)%', '%env(DB_NAME)%', '%env(DB_USER)%', '%env(DB_PASS)%']
