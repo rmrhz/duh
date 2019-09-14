@@ -4,7 +4,12 @@ namespace News\Http\Controllers;
 
 final class PlatformController extends \News\Http\Controller
 {
-    use \News\Traits\Bulletin;
+    protected $bulletin;
+
+    public function __construct(BulletinRepository $bulletin)
+    {
+        $this->bulletin = $bulletin;
+    }
 
     public function getIndex()
     {
