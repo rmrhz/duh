@@ -19,5 +19,8 @@
     "classmap": [
       "vendor/lincanbin/php-pdo-mysql-class"
     ]
+  },
+  "require-dev": {
+    "overtrue/phplint": "^1.1"
   }
 }
