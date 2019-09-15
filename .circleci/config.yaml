@@ -1,0 +1,21 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/php:7.3.9
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - dependencies-{{ checksum "composer.lock" }}
+          - dependencies-
+      - run:
+          name: Install composer dependencies
+          command: composer install
+      - run:
+          name: Lint it
+          command: vendor/bin/phplint -c .phplint.yaml
+      - save_cache:
+          paths:
+            - ./vendor
+          key: dependencies-{{ checksum "composer.lock" }}
