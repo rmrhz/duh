@@ -3,7 +3,7 @@
     "php": ">=7.0.0",
     "vlucas/phpdotenv": "^2.4",
     "lincanbin/php-pdo-mysql-class": "^1.0",
-    "twig/twig": "^2.0",
+    "twig/twig": "^3.11",
     "symfony/http-foundation": "^4.3",
     "symfony/dependency-injection": "^4.3",
     "symfony/config": "^4.3",
